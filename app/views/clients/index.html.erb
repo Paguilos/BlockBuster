@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container mb-3 text-secondary bg-warning">
+  <h1>Clients</h1>
+  <ul class= "nuevo_cliente fs-4 mt-3">
+    <li><%= link_to "New client", new_client_path %></li><br>
+    
+  </ul>
+</div>
+  <div class="clients">
+    <table class="table table-bordered mt-5">
+      <thead class="colum-title bg-secondary text-white fs-5 text-center">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Movie</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <%= render client %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
