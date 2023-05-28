@@ -1,20 +1,9 @@
-<h1>Editando Cliente</h1>
-
-<%= render "form", client: @client %>
-
-<br>
-
-<div>
-  <%= link_to "Show this client", @client %> |
-  <%= link_to "Back to clients", clients_path %>
-</div>
-
-<div class="container justify-content-center">
-  <h1>Editando Cliente</h1>
-    <div class="card text-bg-light mb-3 ms-5 d-flex justify-content-center" style="max-width: 36rem;"> 
+<div class="container text-secondary">
+  <h1>Editando Cliente</h1><br>
+    <div class="card text-bg-light mb-3 d-flex justify-content-center" style="max-width: 36rem;"><br>
         <%= render "form", client: @client %>
           <div class="card-body">              
-              <div class="container d-flex justify-content-center">                
+              <div class="container d-flex justify-content-center mt-3">                
                     <p><%= link_to "Mostrar este cliente", @client, class: "link-mostrar fs-5" %></p>
                     <p><%= link_to "Volver a clientes", clients_path, class: "link-mostrar fs-5 ms-5" %></p>
               </div>              

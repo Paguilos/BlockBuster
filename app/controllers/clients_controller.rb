@@ -1,9 +1,10 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[ show edit update destroy ]
+  before_action :set_client, only: %i[ show edit update destroy ]  
+  before_action :set_movies, only: %i[ new edit create destroy update]
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.all.each_slice(2).to_a
   end
 
   # GET /clients/1 or /clients/1.json
@@ -12,11 +13,11 @@ class ClientsController < ApplicationController
 
   # GET /clients/new
   def new
-    @client = Client.new
+    @client = Client.new     
   end
 
   # GET /clients/1/edit
-  def edit
+  def edit    
   end
 
   # POST /clients or /clients.json
@@ -35,9 +36,10 @@ class ClientsController < ApplicationController
   end
 
   # PATCH/PUT /clients/1 or /clients/1.json
-  def update
-    respond_to do |format|
-      if @client.update(client_params)
+  def update    
+    respond_to do |format|    
+
+      if @client.update(client_params)        
         format.html { redirect_to client_url(@client), notice: "Client was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else
@@ -48,7 +50,7 @@ class ClientsController < ApplicationController
   end
 
   # DELETE /clients/1 or /clients/1.json
-  def destroy
+  def destroy   
     @client.destroy
 
     respond_to do |format|
@@ -63,8 +65,14 @@ class ClientsController < ApplicationController
       @client = Client.find(params[:id])
     end
 
+    def set_movies
+      @movies = Movie.all.pluck :name, :id
+    end
+
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:name, :age, :selected)
+      params.require(:client).permit(:name, :age, :movie_id, movie_attributes: [:name])
+      
     end
 end
+

@@ -10,15 +10,20 @@
       </ul>
     </div>
   <% end %>
-  <div class="container">
+  <div class="container fs-5">
     <div>
-      <%= form.label :name, style: "display: block" %>
+      <%= form.label :Nombre, style: "display: block" %>
       <%= form.text_field :name %>
-    </div>
+    </div><br>
 
     <div>
-      <%= form.label :age, style: "display: block" %>
+      <%= form.label :Edad, style: "display: block" %>
       <%= form.text_field :age %>
+    </div><br>
+
+    <div>
+      <%= form.label :movie_id, style: "display: block" %>
+     <%= form.collection_select :movie_id, Movie.all, :id, :name %>
     </div>
 
     <div>

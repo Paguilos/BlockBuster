@@ -1,4 +1,4 @@
 class Client < ApplicationRecord
-  has_many :movies
-  attr_accessor :selected
+has_many :movies
+accepts_nested_attributes_for :movies
 end

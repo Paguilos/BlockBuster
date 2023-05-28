@@ -1,18 +1,20 @@
-<div class="container">
-  <div class="card text-bg-light mb-3 ms-5 d-flex justify-content-center" style="max-width: 36rem;"> 
-      <div id="<%= dom_id client %>">
-        <div class="card-body">  
-            <h5 class="card-title fs-5 fw-5"><strong></strong>Id: <%= client.id %></h5>
-            <h5 class="card-text fs-3 fw-5 d-inline"><strong></strong>Nombre: <%=  client.name %></h5><p class= "edad d-inline ms-3">(Edad: <%= client.age %>)</p>                  
-            <p class="card-text fs-3"><strong></strong>Último arriendo: <%= client.movies.last %>
-            <div class="container d-flex justify-content-center">                
-                  <p><%= link_to "Mostrar este cliente", client, class: "link-mostrar fs-5" %></p>
-                  <p><%= link_to "Editar este cliente", edit_client_path(client), class: "link-mostrar fs-5 ms-5" %></p>
-            </div>
-            <div class="container d-flex justify-content-center">
-                  <p><%= button_to "Eliminar este cliente", client, method: :delete, class: "link-mostrar fs-5" %></p>
-            </div>
-          </div>
-      </div>
-  </div>
+<div class="container col-6">      
+                <div class="card text-bg-light mb-3 ms-5 d-flex justify-content-center" style="max-width: 36rem;"> 
+                    <div id="<%= dom_id client %>">
+                      <div class="card-body">  
+                          <h5 class="card-title fs-5 fw-5"><strong></strong>Id: <%= client.id %></h5>
+                          <h5 class="card-text fs-3 fw-5 d-inline"><strong></strong>Nombre: <%=  client.name %></h5><p class= "edad d-inline ms-3">(Edad: <%= client.age %>)</p>                  
+                          <p class="card-text fs-3"><strong></strong>Último arriendo: <% movie = Movie.find_by(id: client.movie_id) %>
+                              <%= movie.name if movie %>
+                          <div class="container d-flex justify-content-center">                
+                                <p><%= link_to "Mostrar este cliente", client, class: "link-mostrar fs-5" %></p>
+                                <p><%= link_to "Editar este cliente", edit_client_path(client), class: "link-mostrar fs-5 ms-5" %></p>
+                          </div>
+                          <div class="container d-flex justify-content-center">
+                                <p><%= button_to "Eliminar este cliente", client, method: :delete, class: "link-mostrar fs-5" %></p>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+      </div>             
 </div>
